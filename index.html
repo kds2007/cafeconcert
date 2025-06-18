@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Menú - Gracia Sublime</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap');
+
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #e0f2fe, #f8fafc);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-height: 100vh;
+    }
+
+    .logo-container {
+      margin-top: 30px;
+    }
+
+    img.logo {
+      max-width: 100px;
+      border-radius: 14px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease;
+    }
+
+    img.logo:hover {
+      transform: scale(1.05);
+    }
+
+    .contenedor {
+      width: 100%;
+      max-width: 600px;
+      padding: 0 20px;
+      box-sizing: border-box;
+    }
+
+    h1 {
+      font-size: 2rem;
+      color: #1d4ed8;
+      margin: 20px 0;
+      font-weight: 700;
+      text-align: center;
+    }
+
+    form {
+      background: white;
+      padding: 30px;
+      border-radius: 20px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+      width: 100%;
+      margin-bottom: 80px;
+      box-sizing: border-box;
+    }
+
+    label {
+      display: block;
+      font-weight: 500;
+      margin-bottom: 6px;
+      color: #334155;
+    }
+
+    input[type="text"],
+    input[type="number"],
+    select,
+    textarea {
+      width: 100%;
+      padding: 12px;
+      margin-bottom: 20px;
+      border: 1px solid #cbd5e1;
+      border-radius: 10px;
+      font-size: 1rem;
+      background-color: #f1f5f9;
+      transition: 0.3s ease;
+    }
+
+    input:focus,
+    select:focus,
+    textarea:focus {
+      border-color: #3b82f6;
+      background-color: #fff;
+      outline: none;
+    }
+
+    button,
+    input[type="submit"] {
+      background: linear-gradient(90deg, #3b82f6, #2563eb);
+      color: white;
+      padding: 12px 24px;
+      border: none;
+      border-radius: 12px;
+      font-size: 1rem;
+      font-weight: 500;
+      cursor: pointer;
+      transition: 0.3s ease;
+    }
+
+    button:hover,
+    input[type="submit"]:hover {
+      background: linear-gradient(90deg, #2563eb, #1e40af);
+      transform: scale(1.05);
+    }
+
+    .whatsapp-btn {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background-color: #25d366;
+      color: white;
+      border: none;
+      border-radius: 50%;
+      width: 60px;
+      height: 60px;
+      font-size: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+      z-index: 999;
+      transition: 0.3s ease;
+      text-decoration: none;
+    }
+
+    .whatsapp-btn:hover {
+      background-color: #1ebe5b;
+      transform: scale(1.1);
+    }
+
+    .fade-in {
+      opacity: 0;
+      animation: fadeIn 1.2s ease-in-out forwards;
+    }
+
+    @keyframes fadeIn {
+      to {
+        opacity: 1;
+      }
+    }
+
+    .mensaje-flotante {
+      position: fixed;
+      top: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: #1d4ed8;
+      color: white;
+      padding: 12px 24px;
+      border-radius: 25px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+      font-weight: 500;
+      z-index: 999;
+      animation: slideDown 1.2s ease-out;
+    }
+
+    @keyframes slideDown {
+      from {
+        transform: translate(-50%, -40px);
+        opacity: 0;
+      }
+      to {
+        transform: translate(-50%, 0);
+        opacity: 1;
+      }
+    }
+
+    @media (max-width: 600px) {
+      h1 {
+        font-size: 1.6rem;
+      }
+
+      img.logo {
+        max-width: 80px;
+      }
+
+      .whatsapp-btn {
+        width: 50px;
+        height: 50px;
+        font-size: 24px;
+      }
+    }
+  </style>
+</head>
+
+<body class="fade-in">
+  <a href="https://wa.me/5493764863019" class="whatsapp-btn" target="_blank">🟢</a>
+
+  <div class="logo-container">
+    <img src="logo.jpg" alt="Gracia Sublime" class="logo">
+  </div>
+
+  <div class="contenedor">
+    <h1>Pedido de Comida</h1>
+
+    <form id="pedidoForm">
+      <label>Nombre:
+        <input type="text" id="nombre" required>
+      </label>
+      <label>Mesa:
+        <input type="text" id="mesa" required>
+      </label>
+
+      <h2>Comidas</h2>
+      <div class="menu-item">
+        Hamburguesa
+        <input type="number" class="cantidad" data-item="Hamburguesa" min="0" value="0">
+      </div>
+      <div class="menu-item">
+        Pizza
+        <input type="number" class="cantidad" data-item="Pizza" min="0" value="0">
+      </div>
+      <div class="menu-item">
+        Empanadas
+        <input type="number" class="cantidad" data-item="Empanadas" min="0" value="0">
+      </div>
+
+      <h2>Bebidas</h2>
+      <div class="menu-item">
+        Coca-Cola
+        <input type="number" class="cantidad" data-item="Coca-Cola" min="0" value="0">
+      </div>
+      <div class="menu-item">
+        Agua Mineral
+        <input type="number" class="cantidad" data-item="Agua Mineral" min="0" value="0">
+      </div>
+      <div class="menu-item">
+        Jugo de Naranja
+        <input type="number" class="cantidad" data-item="Jugo de Naranja" min="0" value="0">
+      </div>
+
+      <label>Método de pago:
+        <select id="pago">
+          <option value="Efectivo">Efectivo</option>
+          <option value="Tarjeta">Tarjeta</option>
+          <option value="MercadoPago">MercadoPago</option>
+        </select>
+      </label>
+
+      <div id="alias" style="display: none;">
+        Alias para pagar: <span>restaurante.alias.mp</span>
+      </div>
+
+      <button type="submit">Enviar por WhatsApp</button>
+    </form>
+  </div>
+
+  <script>
+    const form = document.getElementById('pedidoForm');
+    const aliasDiv = document.getElementById('alias');
+    const metodoPago = document.getElementById('pago');
+
+    metodoPago.addEventListener('change', () => {
+      aliasDiv.style.display = (metodoPago.value === "Tarjeta" || metodoPago.value === "MercadoPago") ? "block" : "none";
+    });
+
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+
+      const nombre = document.getElementById('nombre').value.trim();
+      const mesa = document.getElementById('mesa').value.trim();
+      const pago = metodoPago.value;
+      const aliasTexto = (pago === "Tarjeta" || pago === "MercadoPago") ? "\nAlias: restaurante.alias.mp" : "";
+
+      if (!nombre || !mesa) {
+        alert("Por favor completá tu nombre y número de mesa.");
+        return;
+      }
+
+      let pedido = "";
+      document.querySelectorAll('.cantidad').forEach(input => {
+        const cantidad = parseInt(input.value);
+        const item = input.dataset.item;
+        if (cantidad > 0) {
+          pedido += `- ${cantidad} x ${item}\n`;
+        }
+      });
+
+      if (!pedido) {
+        alert("Seleccioná al menos un producto con cantidad mayor a 0.");
+        return;
+      }
+
+      const mensaje = `Hola! Soy ${nombre}, mesa ${mesa}.\nMi pedido es:\n${pedido}\nPago con: ${pago}${aliasTexto}`;
+      const url = `https://wa.me/5493764863019?text=${encodeURIComponent(mensaje)}`;
+      window.open(url, '_blank');
+    });
+  </script>
+</body>
+</html>
